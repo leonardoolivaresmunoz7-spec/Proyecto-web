@@ -1,0 +1,183 @@
+button {margin-right: 15px;}
+
+.banner {
+  
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("../imagenes/fia.jpg");
+  background-size: cover;       
+  background-position: center;   
+  height: 500px;                
+  display: flex;                
+  justify-content: center;      
+  align-items: center;          
+  text-align: center;           
+  color: #ffffff;               
+}
+
+
+.contenido-banner h1 {
+  font-size: 46px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+
+.resaltado {
+  background-color: #f1b800;    
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 4px;           
+  display: inline-block;
+}
+
+
+.contenido-banner p {
+  font-size: 22px;
+  font-weight: 300;             
+}
+.intro{
+  margin: 80px;
+  margin-top: 40px ;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.enviar{
+  display: block;
+  margin: 0 auto;
+  background-color: #f1b800;
+  border: none;
+  color: white;
+  padding: 15px;
+  width: 120px;
+}
+.contenedor{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("../imagenes/banner.jpg");
+  margin: 40px;
+  height: 450px;
+  justify-content: space-around;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  padding: 50px 0 50px 0;
+}
+.recuadro{
+  background-color: #ffffff;
+  padding: 24px;
+  display: flex;             
+  align-items: flex-start;  
+  gap: 16px;                
+  border-radius: 4px;      
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);}
+
+.icono img {
+  width: 45px;
+  height: auto;
+  display: block;
+}
+
+
+.contenido-recuadro h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333333;
+  font-family: Arial, sans-serif;
+}
+
+.contenido-recuadro p {
+  margin: 0 0 16px 0;
+  font-size: 0.95rem;
+  color: #666666;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+}
+
+.link {
+  color: #d4a017;           
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: inline-block;
+  font-family: Arial, sans-serif;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  padding-bottom: 10px;
+  text-decoration-thickness: 6px;
+  text-underline-offset: 20px;
+  text-decoration-color: #d4a017;
+}
+
+.mi-carrusel-personalizado {
+  max-width: 1150px;
+  margin: 50px auto;
+}
+
+.mi-carrusel-personalizado .carousel-item img {
+  height: 550px;
+  object-fit: cover;
+}
+
+.mi-carrusel-personalizado .carousel-caption {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  padding: 10px;
+}
+.carousel-item button{
+  background-color:rgba(0, 0, 0, 0.6);
+  border:none;
+  color: white;
+  text-decoration: underline;
+}
+.carousel-item button:hover{
+  color:rgb(77, 133, 206)
+}
+.card-recurso {
+  padding: 0 20px;
+  margin: 50px;
+}
+.card-recurso img {
+  height: 270px;        
+  object-fit: cover;    
+  border-radius: 8px;   
+}
+
+.card-recurso h4 {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  color: #212529;
+}
+.card-recurso a{
+  color:#d4a017 ;
+  text-decoration: none;
+  font-weight: bold;
+}
+.card-recurso a:hover{
+  text-decoration: underline;
+}
+.galeria {
+  display: flex;
+  align-items: center; 
+  gap: 40px;           
+  max-width: 1300px;  
+  margin: 50px auto;
+  padding: 0 20px;
+}
+.galeria h2{
+  text-decoration: none;
+  text-align: left;
+}
+.ui-accordion .ui-accordion-header {
+    background: #d4a017 !important; 
+    border: 1px solid #222222 !important;
+    color: #ffffff !important;
+}
+.ui-accordion {
+    max-width: 1800px; /* Cambia este valor a los píxeles o porcentaje que prefieras */
+    margin: 0 auto;   /* Centra el acordeón en la página */
+}
