@@ -1,0 +1,230 @@
+/* ESTILOS GENERALES Y TEMA OSCURO */
+body {
+  background-color: #1f202b;
+  color: #ffffff;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* NAVEGACIÓN SUPERIOR UNIFICADA */
+.navbar {
+  background-color: #2c2d3c !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.navbar-brand {
+  font-size: 24px;
+  color: #fff !important;
+}
+
+.navbar-brand strong {
+  color: #f1b800;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar-nav .nav-link {
+  color: #e0e0e0 !important;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+  color: #f1b800 !important;
+}
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-link {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-link:hover {
+  color: #f1b800 !important;
+}
+
+.btn-yellow {
+  background-color: #f1b800 !important;
+  color: #000 !important;
+  border: none;
+  padding: 8px 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-yellow:hover {
+  background-color: #d4a100 !important;
+}
+
+/* TÍTULO DE LA PÁGINA */
+h2 {
+  text-align: center;
+  color: #ffffff;
+  text-decoration: underline;
+  padding-bottom: 10px;
+  text-decoration-thickness: 6px;
+  text-underline-offset: 20px;
+  text-decoration-color: #f1b800;
+}
+
+/* ACORDEÓN DE JQUERY PERSONALIZADO */
+#accordion .ui-accordion-header {
+  background: #2c2d3c !important;
+  color: #ffffff !important;
+  border: 1px solid #3f4156 !important;
+  border-radius: 6px !important;
+  margin-top: 8px !important;
+  font-family: sans-serif;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Efecto hover al pasar el cursor sobre las pestañas */
+#accordion .ui-accordion-header:hover {
+  background: #38394e !important;
+  color: #f1b800 !important;
+}
+
+/* Pestaña activa o abierta */
+#accordion .ui-accordion-header.ui-state-active {
+  background: #f1b800 !important;
+  color: #000000 !important;
+  border-color: #f1b800 !important;
+  font-weight: bold;
+}
+
+/* Contenido desplegable del acordeón */
+#accordion .ui-accordion-content {
+  background: #2c2d3c !important;
+  color: #dddddd !important;
+  border: 1px solid #3f4156 !important;
+  border-top: none !important;
+  border-radius: 0 0 6px 6px !important;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+#accordion .ui-accordion-content ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+/* PIE DE PÁGINA (FOOTER) */
+.footer-portal {
+  background-color: #171821;
+  color: #cccccc;
+  padding: 60px 20px 20px 20px;
+  border-top: 2px solid #2c2d3c;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-col h3 {
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer-col h3 strong {
+  color: #f1b800;
+}
+
+.footer-col h4 {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f1b800;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #aaaaaa;
+  margin-bottom: 10px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  color: #cccccc;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: #f1b800;
+  padding-left: 5px;
+}
+
+.redes-sociales {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.redes-sociales a {
+  background-color: #2c2d3c;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+}
+
+.redes-sociales a:hover {
+  background-color: #f1b800;
+  color: #000000;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #2c2d3c;
+  font-size: 13px;
+  color: #888888;
+}

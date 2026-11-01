@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnovaEdu - Agendar Citas de Investigación</title>
+  <link rel="stylesheet" href="estilos/estilos asesorias.css">
+</head>
+<body>
+
+  <!-- NAVEGACIÓN SUPERIOR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="logo-text">Innova<strong>Edu</strong></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#profesores">Profesores</a></li>
+      <li><a href="#mis-citas">Mis Citas</a></li>
+      <li><a href="#registro">Sobre el Portal</a></li>
+    </ul>
+    <div class="nav-auth" id="navAuthContainer">
+      <a href="#registro" id="btnRegistrateTop" class="btn-link">Regístrate</a>
+      <button id="btnIniciarTop" class="btn-yellow">Iniciar sesión</button>
+    </div>
+  </nav>
+
+  <!-- ENCABEZADO / BANNER -->
+  <header id="inicio" class="hero-banner">
+    <div class="hero-content">
+      <h1>Portal de <span class="highlight">Investigación</span> Estudiantil</h1>
+      <p>Agenda una asesoría personalizada con nuestros docentes investigadores y lleva tu proyecto al siguiente nivel.</p>
+    </div>
+  </header>
+
+  <!-- SECCIÓN BUSCADOR Y LISTA DE PROFESORES -->
+  <section id="profesores" class="section-container">
+    <div class="section-header">
+      <h2>Asesores de Investigación Disponibles</h2>
+      <p>Selecciona un docente según su especialidad para solicitar una cita presencial o virtual.</p>
+    </div>
+
+    <!-- Filtros de búsqueda -->
+    <div class="filter-bar">
+      <input type="text" id="inputBusqueda" placeholder="Buscar por nombre o tema (ej. Inteligencia Artificial)...">
+      <select id="selectArea">
+        <option value="todas">Todas las áreas</option>
+        <option value="IA">Inteligencia Artificial y Software</option>
+        <option value="Metodología">Metodología de la Investigación</option>
+        <option value="Datos">Ciencia de Datos y Estadística</option>
+        <option value="Ciberseguridad">Ciberseguridad y Redes</option>
+      </select>
+    </div>
+
+    <!-- Grilla de profesores -->
+    <div class="profesores-grid" id="gridProfesores">
+      
+      <!-- Profesor 1 -->
+      <div class="card-profesor" data-area="IA">
+        <div class="card-avatar">Dr. Carlos Mendoza</div>
+        <h3>Dr. Carlos Mendoza</h3>
+        <span class="badge">Inteligencia Artificial y Software</span>
+        <p class="bio">Doctor en Ciencias de la Computación. Especialista en procesamiento de lenguaje natural y visión computacional.</p>
+        <div class="card-footer">
+          <small>Disponibilidad: Lun y Mié</small>
+          <button class="btn-agendar" onclick="abrirModalCita('Dr. Carlos Mendoza', 'Inteligencia Artificial y Software')">Agendar Cita</button>
+        </div>
+      </div>
+
+      <!-- Profesor 2 -->
+      <div class="card-profesor" data-area="Metodología">
+        <div class="card-avatar alt">Dra. Ana Torres</div>
+        <h3>Dra. Ana Torres</h3>
+        <span class="badge">Metodología de la Investigación</span>
+        <p class="bio">Magíster en Educación. Experta en diseño metodológico, redacción científica y gestión de artículos indexados.</p>
+        <div class="card-footer">
+          <small>Disponibilidad: Mar y Jue</small>
+          <button class="btn-agendar" onclick="abrirModalCita('Dra. Ana Torres', 'Metodología de la Investigación')">Agendar Cita</button>
+        </div>
+      </div>
+
+      <!-- Profesor 3 -->
+      <div class="card-profesor" data-area="Datos">
+        <div class="card-avatar">Ing. Roberto Gómez</div>
+        <h3>Ing. Roberto Gómez</h3>
+        <span class="badge">Ciencia de Datos y Estadística</span>
+        <p class="bio">Investigador en analítica de datos aplicada a la educación y modelos predictivos para análisis de entorno.</p>
+        <div class="card-footer">
+          <small>Disponibilidad: Viernes</small>
+          <button class="btn-agendar" onclick="abrirModalCita('Ing. Roberto Gómez', 'Ciencia de Datos y Estadística')">Agendar Cita</button>
+        </div>
+      </div>
+
+      <!-- Profesor 4 -->
+      <div class="card-profesor" data-area="Ciberseguridad">
+        <div class="card-avatar alt">Dra. Elena Ramos</div>
+        <h3>Dra. Elena Ramos</h3>
+        <span class="badge">Ciberseguridad y Redes</span>
+        <p class="bio">Especialista en seguridad de la información, criptografía aplicada y arquitectura de redes de comunicación.</p>
+        <div class="card-footer">
+          <small>Disponibilidad: Lun y Jue</small>
+          <button class="btn-agendar" onclick="abrirModalCita('Dra. Elena Ramos', 'Ciberseguridad y Redes')">Agendar Cita</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN MIS CITAS AGENDADAS -->
+  <section id="mis-citas" class="section-container citas-section">
+    <div class="section-header">
+      <h2>Mis Citas Agendadas</h2>
+      <p>Aquí se mostrarán las confirmaciones de tus solicitudes de asesoría.</p>
+    </div>
+    <div id="listaCitasContainer" class="citas-lista">
+      <p class="empty-state">Aún no has agendado ninguna cita de investigación.</p>
+    </div>
+  </section>
+
+  <!-- FORMULARIO DE REGISTRO EN EL PIE -->
+  <section id="registro" class="registro-section">
+    <div class="registro-container">
+      <h2>¡REGÍSTRATE AQUÍ!</h2>
+      <p>Forma parte de nuestra comunidad de investigación estudiantil para acceder a recursos y agendar asesorías.</p>
+      
+      <form id="registroForm">
+        <div class="input-group">
+          <input type="email" placeholder="Correo Electrónico" required>
+        </div>
+        <div class="terms-group">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">He leído y acepto los Términos y Condiciones.</label>
+        </div>
+        <button type="submit" class="btn-submit">Regístrate ahora</button>
+      </form>
+      <div id="mensajeExito" class="mensaje-exito" style="display: none;">
+        ¡Se registró correctamente!
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: INICIO DE SESIÓN -->
+  <div id="modalLogin" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <span id="cerrarModalLogin" class="modal-close">&times;</span>
+      <h2>Iniciar Sesión</h2>
+      
+      <form id="formLoginModal">
+        <div class="form-group">
+          <label for="emailLogin">Correo Electrónico</label>
+          <input type="email" id="emailLogin" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="passLogin">Contraseña (mínimo 8 caracteres)</label>
+          <input type="password" id="passLogin" placeholder="********" minlength="8" required>
+        </div>
+        
+        <button type="submit" class="btn-enviar-modal">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: AGENDAR CITA -->
+  <div id="modalCita" class="modal-overlay" style="display: none;">
+    <div class="modal-content modal-lg">
+      <span id="cerrarModalCita" class="modal-close">&times;</span>
+      <h2>Solicitar Cita de Investigación</h2>
+      <p class="sub-modal">Asesor: <strong id="nombreProfeModal" class="highlight-text">--</strong></p>
+      
+      <form id="formCitaModal">
+        <div class="form-group">
+          <label for="nombreEstudiante">Nombre del Estudiante / Equipo</label>
+          <input type="text" id="nombreEstudiante" placeholder="Ej. Leonardo Olivares" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fechaCita">Fecha deseada</label>
+            <input type="date" id="fechaCita" required>
+          </div>
+          <div class="form-group">
+            <label for="horaCita">Hora disponible</label>
+            <select id="horaCita" required>
+              <option value="">Selecciona una hora</option>
+              <option value="09:00 AM">09:00 AM - 10:00 AM</option>
+              <option value="11:00 AM">11:00 AM - 12:00 PM</option>
+              <option value="03:00 PM">03:00 PM - 04:00 PM</option>
+              <option value="05:00 PM">05:00 PM - 06:00 PM</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="motivoCita">Tema / Resumen de la investigación</label>
+          <textarea id="motivoCita" rows="3" placeholder="Describe brevemente el tema o las dudas que deseas revisar..." required></textarea>
+        </div>
+        
+        <button type="submit" class="btn-enviar-modal">Confirmar Cita</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/script asesorias.js"></script>
+</body>
+</html>
