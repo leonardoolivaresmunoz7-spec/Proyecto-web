@@ -4,24 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InnovaEdu - Agendar Citas de Investigación</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="estilos/estilos.css">
   <link rel="stylesheet" href="estilos/estilos asesorias.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="nav-brand">
-      <span class="logo-text">Innova<strong>Edu</strong></span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#profesores">Profesores</a></li>
-      <li><a href="#mis-citas">Mis Citas</a></li>
-      <li><a href="#registro">Sobre el Portal</a></li>
-    </ul>
-    <div class="nav-auth" id="navAuthContainer">
-      <a href="#registro" id="btnRegistrateTop" class="btn-link">Regístrate</a>
-      <button id="btnIniciarTop" class="btn-yellow">Iniciar sesión</button>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">Innova<strong>Edu</strong></a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#profesores">Profesores</a></li>
+          <li class="nav-item"><a class="nav-link" href="#mis-citas">Mis Citas</a></li>
+          <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre el Portal</a></li>
+        </ul>
+        <div class="nav-auth" id="navAuthContainer">
+          <a href="#registro" id="btnRegistrateTop" class="btn-link me-3">Regístrate</a>
+          <button type="button" id="btnIniciarTop" class="btn-yellow">Iniciar sesión</button>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -35,9 +44,9 @@
   <section id="profesores" class="section-container">
     <div class="section-header">
       <h2>Asesores de Investigación Disponibles</h2>
+      <br>
       <p>Selecciona un docente según su especialidad para solicitar una cita presencial o virtual.</p>
     </div>
-
 
     <div class="filter-bar">
       <input type="text" id="inputBusqueda" placeholder="Buscar por nombre o tema (ej. Inteligencia Artificial)...">
@@ -51,9 +60,11 @@
     </div>
 
     <div class="profesores-grid" id="gridProfesores">
-      
+    
       <div class="card-profesor" data-area="IA">
-        <div class="card-avatar">Dr. Carlos Mendoza</div>
+        <div class="card-avatar-img">
+          <img src="imagenes/profesor1.png" class="img-fluid rounded-circle" alt="Dr. Carlos Mendoza" style="width: 100px; height: 100px; object-fit: cover;">
+        </div>
         <h3>Dr. Carlos Mendoza</h3>
         <span class="badge">Inteligencia Artificial y Software</span>
         <p class="bio">Doctor en Ciencias de la Computación. Especialista en procesamiento de lenguaje natural y visión computacional.</p>
@@ -63,8 +74,11 @@
         </div>
       </div>
 
+      
       <div class="card-profesor" data-area="Metodología">
-        <div class="card-avatar alt">Dra. Ana Torres</div>
+        <div class="card-avatar-img">
+          <img src="imagenes/profesor2.jpg" class="img-fluid rounded-circle" alt="Dra. Ana Torres" style="width: 100px; height: 100px; object-fit: cover;">
+        </div>
         <h3>Dra. Ana Torres</h3>
         <span class="badge">Metodología de la Investigación</span>
         <p class="bio">Magíster en Educación. Experta en diseño metodológico, redacción científica y gestión de artículos indexados.</p>
@@ -73,9 +87,10 @@
           <button class="btn-agendar" onclick="abrirModalCita('Dra. Ana Torres', 'Metodología de la Investigación')">Agendar Cita</button>
         </div>
       </div>
-
       <div class="card-profesor" data-area="Datos">
-        <div class="card-avatar">Ing. Roberto Gómez</div>
+        <div class="card-avatar-img">
+          <img src="imagenes/profesor3.jpg" class="img-fluid rounded-circle" alt="Ing. Roberto Gómez" style="width: 100px; height: 100px; object-fit: cover;">
+        </div>
         <h3>Ing. Roberto Gómez</h3>
         <span class="badge">Ciencia de Datos y Estadística</span>
         <p class="bio">Investigador en analítica de datos aplicada a la educación y modelos predictivos para análisis de entorno.</p>
@@ -84,9 +99,10 @@
           <button class="btn-agendar" onclick="abrirModalCita('Ing. Roberto Gómez', 'Ciencia de Datos y Estadística')">Agendar Cita</button>
         </div>
       </div>
-
       <div class="card-profesor" data-area="Ciberseguridad">
-        <div class="card-avatar alt">Dra. Elena Ramos</div>
+        <div class="card-avatar-img">
+          <img src="imagenes/profesor4.jpg" class="img-fluid rounded-circle" alt="Dra. Elena Ramos" style="width: 100px; height: 100px; object-fit: cover;">
+        </div>
         <h3>Dra. Elena Ramos</h3>
         <span class="badge">Ciberseguridad y Redes</span>
         <p class="bio">Especialista en seguridad de la información, criptografía aplicada y arquitectura de redes de comunicación.</p>
@@ -94,14 +110,15 @@
           <small>Disponibilidad: Lun y Jue</small>
           <button class="btn-agendar" onclick="abrirModalCita('Dra. Elena Ramos', 'Ciberseguridad y Redes')">Agendar Cita</button>
         </div>
+        
       </div>
-
     </div>
   </section>
 
   <section id="mis-citas" class="section-container citas-section">
     <div class="section-header">
       <h2>Mis Citas Agendadas</h2>
+      <br>
       <p>Aquí se mostrarán las confirmaciones de tus solicitudes de asesoría.</p>
     </div>
     <div id="listaCitasContainer" class="citas-lista">
@@ -134,18 +151,15 @@
     <div class="modal-content">
       <span id="cerrarModalLogin" class="modal-close">&times;</span>
       <h2>Iniciar Sesión</h2>
-      
       <form id="formLoginModal">
         <div class="form-group">
           <label for="emailLogin">Correo Electrónico</label>
           <input type="email" id="emailLogin" placeholder="tucorreo@ejemplo.com" required>
         </div>
-        
         <div class="form-group">
           <label for="passLogin">Contraseña (mínimo 8 caracteres)</label>
           <input type="password" id="passLogin" placeholder="********" minlength="8" required>
         </div>
-        
         <button type="submit" class="btn-enviar-modal">Entrar</button>
       </form>
     </div>
@@ -189,7 +203,9 @@
       </form>
     </div>
   </div>
-<script src="js/script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
   <script src="js/script asesorias.js"></script>
 </body>
 </html>

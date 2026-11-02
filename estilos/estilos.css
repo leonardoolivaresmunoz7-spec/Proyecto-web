@@ -809,3 +809,17 @@ img {
   border-color: #f1b800 !important;
   font-weight: bold !important;
 }
+/* Evita desbordamientos horizontales en pantallas pequeñas */
+body {
+    overflow-x: hidden;
+}
+
+/* Ajusta el tamaño del título principal en celulares */
+@media (max-width: 768px) {
+    .banner h1 {
+        font-size: 1.8rem;
+    }
+    .contenido-banner {
+        padding: 20px;
+    }
+}
