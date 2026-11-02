@@ -1,84 +1,109 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const modalLogin = document.getElementById('modalLogin');
-  const btnIniciarTop = document.getElementById('btnIniciarTop'); 
-  const cerrarModal = document.getElementById('cerrarModal');
-  const formLoginModal = document.getElementById('formLoginModal');
-  const btnRegistrateTop = document.getElementById('btnRegistrateTop'); 
-  const registroForm = document.getElementById('registroForm');
+document.addEventListener("DOMContentLoaded", function () {
+    // ==========================================
+    // 1. ELEMENTOS DEL DOM
+    // ==========================================
+    const navAuth = document.querySelector(".nav-auth");
+    const modalLogin = document.getElementById("modalLogin");
+    const btnIniciarTop = document.getElementById("btnIniciarTop");
+    const cerrarModal = document.getElementById("cerrarModal");
+    const formLoginModal = document.getElementById("formLoginModal");
+    const registroForm = document.getElementById("registroForm");
+    const mensajeExito = document.getElementById("mensajeExito");
 
-  // Asegurar explícitamente que el modal inicie oculto al cargar la página
-  if (modalLogin) {
-    modalLogin.style.display = 'none';
-  }
+    // ==========================================
+    // 2. GESTIÓN DE SESIÓN PERSISTENTE (LOCALSTORAGE)
+    // ==========================================
+    function verificarEstadoSesion() {
+    const usuarioLogueado = localStorage.getItem("innovaEduUsuario");
 
-  // Abrir ventana modal al hacer clic en "Iniciar sesión"
-  if (btnIniciarTop && modalLogin) {
-    btnIniciarTop.addEventListener('click', function(e) {
-      e.preventDefault();
-      modalLogin.style.display = 'flex';
-    });
-  }
+    if (usuarioLogueado && navAuth) {
+        // Extraemos solo lo que está antes del "@"
+        const nombreUsuario = usuarioLogueado.split('@')[0];
 
-  // Cerrar modal usando la "X"
-  if (cerrarModal && modalLogin) {
-    cerrarModal.addEventListener('click', function(e) {
-      e.preventDefault();
-      modalLogin.style.display = 'none';
-    });
-  }
+        // Reemplaza los botones de Login/Registro por el saludo recortado
+        navAuth.innerHTML = `
+            <span class="text-warning small fw-bold me-2">Hola, ${nombreUsuario}</span>
+            <button type="button" id="btnCerrarSesion" class="btn btn-sm btn-outline-warning">Cerrar sesión</button>
+        `;
 
-  // Cerrar modal al hacer clic fuera de la caja de contenido
-  if (modalLogin) {
-    window.addEventListener('click', function(e) {
-      if (e.target === modalLogin) {
-        modalLogin.style.display = 'none';
-      }
-    });
-  }
-
-  // Enviar formulario de inicio de sesión con validación de 8 caracteres
-  if (formLoginModal) {
-    formLoginModal.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const passwordInput = document.getElementById('passLogin').value;
-
-      if (passwordInput.length < 8) {
-        alert('La contraseña debe tener al menos 8 caracteres.');
-        return;
-      }
-
-      alert('¡Sesión iniciada correctamente!');
-
-      modalLogin.style.display = 'none';
-
-      // Ocultar botones superiores de autenticación tras iniciar sesión con éxito
-      if (btnIniciarTop) btnIniciarTop.style.display = 'none';
-      if (btnRegistrateTop) {
-        const linkRegistrate = btnRegistrateTop.closest('.nav-auth') || btnRegistrateTop.closest('a');
-        if (linkRegistrate) {
-          linkRegistrate.style.display = 'none';
-        } else {
-          btnRegistrateTop.style.display = 'none';
+        // Evento para cerrar sesión
+        const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+        if (btnCerrarSesion) {
+            btnCerrarSesion.addEventListener("click", function () {
+                localStorage.removeItem("innovaEduUsuario");
+                window.location.reload();
+            });
         }
-      }
-      
-      formLoginModal.reset();
-    });
-  }
+    }
+}
 
-  // Formulario de registro inferior
-  if (registroForm) {
-    registroForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      const mensaje = document.getElementById('mensajeExito');
-      if (mensaje) {
-        mensaje.style.display = 'block';
-        this.reset();
-        setTimeout(function() {
-          mensaje.style.display = 'none';
-        }, 5000);
-      }
-    });
-  }
+    // Ejecuta la verificación al cargar la página
+    verificarEstadoSesion();
+
+    // ==========================================
+    // 3. MODAL DE INICIO DE SESIÓN
+    // ==========================================
+    // Abrir modal desde el botón del navbar
+    if (btnIniciarTop && modalLogin) {
+        btnIniciarTop.addEventListener("click", function (e) {
+            e.preventDefault();
+            modalLogin.style.display = "flex";
+        });
+    }
+
+    // Cerrar modal al presionar la 'X' o fuera de la ventana
+    if (cerrarModal && modalLogin) {
+        cerrarModal.addEventListener("click", function () {
+            modalLogin.style.display = "none";
+        });
+
+        window.addEventListener("click", function (e) {
+            if (e.target === modalLogin) {
+                modalLogin.style.display = "none";
+            }
+        });
+    }
+
+    // Envío del formulario de Login
+    if (formLoginModal) {
+        formLoginModal.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const emailInput = document.getElementById("emailLogin").value.trim();
+
+            if (emailInput) {
+                // Guarda la sesión en el navegador
+                localStorage.setItem("innovaEduUsuario", emailInput);
+                
+                if (modalLogin) {
+                    modalLogin.style.display = "none";
+                }
+
+                // Actualiza el navbar inmediatamente sin perder el estado al navegar
+                verificarEstadoSesion();
+            }
+        });
+    }
+
+    // ==========================================
+    // 4. FORMULARIO DE REGISTRO (SI EXISTE EN LA PÁGINA)
+    // ==========================================
+    if (registroForm) {
+        registroForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const correoInput = document.getElementById("correoInput").value.trim();
+
+            if (correoInput) {
+                // Muestra mensaje de confirmación y guarda sesión opcionalmente
+                if (mensajeExito) {
+                    mensajeExito.style.display = "block";
+                }
+                
+                // Auto-iniciar sesión tras el registro
+                localStorage.setItem("innovaEduUsuario", correoInput);
+                verificarEstadoSesion();
+                
+                registroForm.reset();
+            }
+        });
+    }
 });

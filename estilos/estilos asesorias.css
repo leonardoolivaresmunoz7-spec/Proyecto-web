@@ -457,3 +457,26 @@ body {
 .btn-enviar-modal:hover {
   background-color: #d4a100;
 }
+/* Estilos para el estado de sesión activa en la barra de navegación */
+.nav-auth span.text-warning {
+  color: #f1b800 !important;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Botón de cerrar sesión en el navbar */
+.nav-auth #btnCerrarSesion {
+  background-color: transparent !important;
+  border: 1px solid #f1b800 !important;
+  color: #f1b800 !important;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-auth #btnCerrarSesion:hover {
+  background-color: #f1b800 !important;
+  color: #1f202b !important;
+}
